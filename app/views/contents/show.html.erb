@@ -1,9 +1,8 @@
-<% @post = Content.published.where(visibility: "pubblico").friendly.find(params[:id]) rescue nil %>
-<% if @post && @post.visibility == "pubblico" %>
+<% if @content.publication_date <= Time.current && @content.visibility == "pubblico" %>
   <div class="flex  items-start gap-half mbe-4">
-    <%= link_to 'Vai alla nota pubblica', post_path(@post), class:"btn btn--primary" %>
+    <%= link_to 'Vai alla nota pubblica', post_path(@content), class:"btn btn--primary" %>
     <div class="input input--actor flex items-center gap" data-controller="copyable-input">
-      <%= text_field_tag "copyable_input", "#{request.base_url}#{post_path(@post)}", readonly: "readonly", data: { copyable_input_target: "input" } %>
+      <%= text_field_tag "copyable_input", "#{request.base_url}#{post_path(@content)}", readonly: "readonly", data: { copyable_input_target: "input" } %>
       <button type="button" class="btn btn--plain" data-copyable-input-target="button" data-action="copyable-input#copy">
         <%= image_tag "copy.svg", size: 20, aria: { hidden: true } %>
         <span class="sr-only">Copy to clipboard</span>
