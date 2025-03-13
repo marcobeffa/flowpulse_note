@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-1">
+  <p class="text-lg  text-gray-800 p-4"> <span class="font-semibold">Autore:</span>
+    <%= @profile.username.titleize %>
+  </p>
+</div>
+<% @posts.each do |content| %>
+  <div class="card flex flex-col p-4 bg-white shadow-md rounded-lg mb-4">
+    <%= link_to post_path(content), class: "flex flex-col sm:flex-row items-start sm:items-center gap-4 text-gray-900 hover:text-blue-500" do %>
+      <div class="text-sm text-gray-500">
+        <%= I18n.l(content.publication_date, format: :long) if content.publication_date %>
+      </div>
+      <div class="font-semibold text-lg sm:ml-4">
+        <%= content.title %>
+      </div>
+      <div class="text-gray-600 sm:ml-4">
+        <%= content.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

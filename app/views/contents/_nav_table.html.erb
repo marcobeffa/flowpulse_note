@@ -1,0 +1,79 @@
+<tr>
+  <td class="flex">
+    <%= search_form_for @q, class: "flex items-center justify-between gap mbe-4" do |form| %>
+      <div class="flex items-center grow gap">
+        <%  if params.except(:controller, :action).present? %>
+          <% if params[:q].blank? %>
+            <%= link_to "Reset" , "#", class: "btn btn--borderless show@md", onclick: "window.location.href = window.location.pathname;" %>
+          <% else%>
+            <%= link_to "#", class: "btn btn--primary show@md", onclick: "window.location.href = window.location.pathname;" do %>
+              <%= params[:q]["title_i_cont"] %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+              <!--Icona "X" per cancellare-->
+            <% end %>
+          <% end %>
+        <% else%>
+          <%= form.search_field :title_i_cont, placeholder: "Filter Contents...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+          <%= form.submit "Search", class: "btn show@sm", style:"margin-left:4px; margin-right:4px;"%>
+        <% end %>
+        <%#= form.search_field :title_i_cont, placeholder: "Filter tasks...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+        <%#= link_to "Reset", contents_path, class: "btn btn--borderless show@md" if params.has_key?(:q) %>
+      </div>
+      <%#= form.submit "Search", class: "btn show@sm" %>
+    <% end %>
+    <!-- <%= form_with url: request.path, method: :get, local: true do |form| %>
+   
+      <%  if params.except(:controller, :action).present? %>
+        <% if params[:title_i_cont].blank? %>
+          <%= link_to "Reset" , "#", class: "btn btn--borderless show@md", onclick: "window.location.href = window.location.pathname;" %>
+        <% else%>
+          <%= link_to "#", class: "btn btn--borderless show@md", onclick: "window.location.href = window.location.pathname;" do %>
+            <%= params[:title_i_cont] %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            <Icona "X" per cancellare>
+          <% end %>
+        <% end %>
+      <% else%>
+        <%= form.search_field :title_i_cont, placeholder: "Filter Contents...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+        <%= form.submit "Search", class: "btn show@sm", style:"margin-left:4px; margin-right:4px;"%>
+      <% end %> 
+        -->
+  </td>
+  <td><!--
+      <%= form.select :publication_date,
+        options_for_select(
+          [['Tutti', ''], ['Passati', 'passati'], ['Futuri', 'futuri']],
+          @publication_date 
+        ),
+        {},
+        { class: "input",  onchange: "this.form.submit();" }
+      %> -->
+  </td>
+  <td>
+    <!--     <%= form.select :visibility,
+        options_for_select(
+          [['Tutti', '']] +
+          Content.visibilities.keys.map { |v| [v.titleize, v] },
+          @visibility
+        ),
+        {},
+        { class: "input",  onchange: "this.form.submit();" }
+      %> -->
+  </td>
+  <td>
+    <!--   <%= form.select :stato,
+        options_for_select(
+          [['Tutti', '']] +
+          Content.statos.keys.map { |v| [v.titleize, v] },
+          @stato
+        ),
+        {},
+        { class: "input",  onchange: "this.form.submit();" }
+      %>-->
+  </td>
+  <!-- <% end %>-->
+</tr>

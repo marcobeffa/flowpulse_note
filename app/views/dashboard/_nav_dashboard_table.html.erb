@@ -1,0 +1,86 @@
+<%#= [action_name, params[:data], params[:pubblicazione], params[:visibility], params[:stato] ]%>
+<tr>
+  <td class="flex">
+    <%= search_form_for @q, class: "flex items-center justify-between gap mbe-4" do |form| %>
+      <div class="flex items-center grow gap">
+        <%= form.search_field :title_i_cont, placeholder: "Filter Note...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+        <%= link_to "Reset", contents_path, class: "btn btn--borderless show@md" if params.has_key?(:q) %>
+        <%= form.submit "Cerca", class: "btn show@sm" %>
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <div data-controller="popover" data-popover-placement-value="bottom-start">
+      <button type="button" id="menu_button" class="btn" data-popover-target="button" data-action="popover#toggle" aria-haspopup="true" aria-controls="menu">
+        <% if params[:pubblicazione] == "all" %>
+          Tutti
+        <% else %>
+          <%= params[:pubblicazione]%>
+        <% end %>
+      </button>
+      <div popover class="popover" style="--popover-size: 8rem;" data-popover-target="menu">
+        <div id="menu" class="menu" data-controller="menu" data-action="keydown.up->menu#prev keydown.down->menu#next" role="menu" aria-labelledby="menu_button">
+          <%  ([['Tutti', 'all'], ['Schedulato', 'schedulato'], ['Pubblicato', 'pubblicato']]).each do |publi| %>
+            <% if action_name == "all" %>
+              <%= link_to "#{publi.first.titleize}", dashboard_path_for(:all, data: params[:data], pubblicazione:  publi.last, visibility: params[:visibility], stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% elsif action_name == "past" %>
+              <%= link_to "#{publi.first.titleize}", dashboard_path_for(:past, data: params[:data], pubblicazione: publi.last, visibility:  params[:visibility], stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% elsif  action_name == "future" %>
+              <%= link_to "#{publi.first.titleize}", dashboard_path_for(:future, data: params[:data], pubblicazione: publi.last, visibility: params[:visibility], stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div data-controller="popover" data-popover-placement-value="bottom-start">
+      <button type="button" id="menu_button" class="btn" data-popover-target="button" data-action="popover#toggle" aria-haspopup="true" aria-controls="menu">
+        <% if params[:visibility] == "all" %>
+          Tutti
+        <% else %>
+          <%= params[:visibility]%>
+        <% end %>
+      </button>
+      <div popover class="popover" style="--popover-size: 8rem;" data-popover-target="menu">
+        <div id="menu" class="menu" data-controller="menu" data-action="keydown.up->menu#prev keydown.down->menu#next" role="menu" aria-labelledby="menu_button">
+          <%  ([['Tutti', 'all']] + Content.visibilities.keys.map { |v| [v.titleize, v] }).each do |visib| %>
+            <% if action_name == "all" %>
+              <%= link_to "#{visib.first.titleize}", dashboard_path_for(:all, data: params[:data], pubblicazione: params[:pubblicazione], visibility: visib.last, stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% elsif action_name == "past" %>
+              <%= link_to "#{visib.first.titleize}", dashboard_path_for(:past, data: params[:data], pubblicazione: params[:pubblicazione],visibility: visib.last, stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% elsif  action_name == "future" %>
+              <%= link_to "#{visib.first.titleize}", dashboard_path_for(:future, data: params[:data], pubblicazione: params[:pubblicazione],visibility: visib.last, stato: params[:stato]), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </td>
+  <% if params[:pubblicazione] != "pubblicato" %>
+    <td>
+      <div data-controller="popover" data-popover-placement-value="bottom-start">
+        <button type="button" id="menu_button" class="btn" data-popover-target="button" data-action="popover#toggle" aria-haspopup="true" aria-controls="menu">
+          <% if params[:stato] == "all" %>
+            Tutti
+          <% else %>
+            <%= params[:stato]%>
+          <% end %>
+        </button>
+        <div popover class="popover" style="--popover-size: 8rem;" data-popover-target="menu">
+          <div id="menu" class="menu" data-controller="menu" data-action="keydown.up->menu#prev keydown.down->menu#next" role="menu" aria-labelledby="menu_button">
+            <%  ([['Tutti', 'all']] + Content.statos.keys.map { |v| [v.titleize, v] }).each do |stato| %>
+              <% if action_name == "all" %>
+                <%= link_to "#{stato.first.titleize}", dashboard_path_for(:all, data: params[:data], pubblicazione: params[:pubblicazione], visibility: params[:visibility], stato: stato.last), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+              <% elsif action_name == "past" %>
+                <%= link_to "#{stato.first.titleize}", dashboard_path_for(:past, data: params[:data], pubblicazione: params[:pubblicazione], visibility: params[:visibility], stato: stato.last), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+              <% elsif  action_name == "future" %>
+                <%= link_to "#{stato.first.titleize}", dashboard_path_for(:future, data: params[:data], pubblicazione: params[:pubblicazione], visibility: params[:visibility], stato: stato.last ), class: "btn menu__item", data: { menu_target: "item" }, role: "menuitem" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </td>
+  <% end %>
+</tr>

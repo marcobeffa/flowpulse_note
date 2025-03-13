@@ -1,0 +1,18 @@
+<div class="flex items-center gap">
+  <% if authenticated? %>
+    <%= link_to "#", class: "flex items-center gap mie-2" do %>
+      <%= image_tag "circle-slash.svg", size: 24, aria: { hidden: true } %>
+      <span class="font-bold">Flow Pulse</span>
+    <% end %>
+  <% end %>
+  <nav class="flex items-center gap text-sm text-subtle show@md" style="--column-gap: 1rem">
+    <% if authenticated? %>
+      <%= link_to "Dashboard", contents_path, class: "text-primary" %>
+    <% end %>
+  </nav>
+</div>
+<div class="flex items-center gap">
+  <button type="button" class="btn avatar">
+    <%= image_tag "cartoon.jpg", size: 48, alt: "CN" %>
+  </button>
+</div>

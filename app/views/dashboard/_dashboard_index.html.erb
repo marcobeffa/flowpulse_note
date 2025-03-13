@@ -1,0 +1,36 @@
+<% content_for :title, "Contents" %>
+<%#= params[:q]%>
+<div class="flex items-center justify-between mbe-4">
+  <h1 class="font-bold text-4xl">Dashboard</h1>
+  <%= render "dashboard/nav_dashboard"%>
+</div>
+<div class="overflow-x-hidden">
+  <table class="table" id="contents">
+    <caption>
+      A list of content.
+    </caption>
+    <thead>
+      <%= render 'dashboard/nav_dashboard_table' %>
+      <tr>
+        <td>Title</td>
+        <td>Pubblicazione</td>
+        <td>Visibility</td>
+        <% if params[:pubblicazione] != "pubblicato" %>
+          <td>Stato</td>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contents.each do |content| %>
+        <%= render content %>
+      <% end %>
+    </tbody>
+    <!--tfoot>
+    <tr>
+      <td colspan="3">Total</td>
+      <td class="text-end">$2,500.00</td>
+    </tr>
+  <tfoot-->
+  </table>
+</div>
+<%= render 'contents/pagy' %>

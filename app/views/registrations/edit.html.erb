@@ -1,0 +1,50 @@
+<% if alert.present? %>
+  <div popover class="flash" style="--flash-position: 5rem;" 
+       data-controller="element-removal" 
+       data-action="animationend->element-removal#remove" 
+    role="alert"><%= alert %></div>
+<% end %>
+<% if notice.present? %>
+  <div popover class="flash" style="--flash-position: 5rem;" 
+       data-controller="element-removal" 
+       data-action="animationend->element-removal#remove" 
+    role="alert"><%= notice %></div>
+<% end %>
+<h1 class="font-bold text-4xl mbe-4">Edit Profile</h1>
+<%= form_with model: @user, url: registration_path, method: :patch, class: "flex flex-col gap" do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h2 class="text-red-600 font-bold">Attenzione!</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li class="text-red-500"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :username %>
+    <p>Può contenere solo lettere minuscole, numeri e trattini bassi</p>
+    <%= form.text_field :username, required: true, autocomplete: "username", class: "input", value: @user.username %>
+  </div>
+  <div>
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, required: true, autocomplete: "email", class: "input" %>
+    <% if @user.errors[:email_address].any? %>
+      <p class="text-red-500 text-sm"><%= @user.errors[:email_address].join(", ") %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :password %> (Lascia vuoto per mantenere l'attuale)
+    <%= form.password_field :password, autocomplete: "new-password", maxlength: 72, class: "input" %>
+    <% if @user.errors[:password].any? %>
+      <p class="text-red-500 text-sm"><%= @user.errors[:password].join(", ") %></p>
+    <% end %>
+  </div>
+  <div class="flex items-center gap">
+    <%= form.submit "Update", class: "btn btn--primary" %>
+  </div>
+<% end %>
+<br>
+<br>
+<%= button_to 'Esci', session_path, method: :delete, class: "text-sm font-medium underline"  %>

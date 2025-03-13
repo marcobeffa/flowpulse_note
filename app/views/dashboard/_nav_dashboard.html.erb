@@ -1,0 +1,17 @@
+<% Time.current.strftime("%d-%m-%y") %>
+<%= Time.current.in_time_zone.strftime("%Z")%>
+<%= Time.zone %>
+<%#= form_with url: request.path, method: :get, local: true do |form| %>
+  <%#= form.datetime_field :data, class: "input",value: Time.current.strftime("%Y-%m-%dT%H:%M"), style: "max-inline-size: 180px" %>
+  <%#= form.submit "Vai", class: "btn" %>
+  <%# end%>
+  <%= form_with url: request.path, method: :get, local: true do |form| %>
+    <%= form.date_field :data, class: "input",value: Time.current.strftime("%Y-%m-%d"), style: "max-inline-size: 140px" %>
+    <%= form.submit "Vai", class: "btn" %>
+  <% end%>
+  <div class="group" role="group" aria-label="Navigazione eventi">
+    <%= link_to "Tutti", dashboard_path_for(:all), class: "btn btn--#{btn("all", action_name).html_safe}" %>
+    <%= link_to "Prima", dashboard_path_for(:past), class: "btn btn--#{btn("past", action_name).html_safe}" %>
+    <%= link_to "Dopo", dashboard_path_for(:future), class: "btn btn--#{btn("future", action_name).html_safe}" %>
+    <%= link_to "New content", new_content_path, class: "btn btn--secondary" %>
+  </div>
