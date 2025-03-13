@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-1">
   <%= link_to  profile_posts_path(User.find(@post.user_id).username) do %>
     <p class="text-lg  text-gray-800 p-4"> <span class="font-semibold">Autore:</span>
-      <%= User.find(@post.user_id).username.titleize %>
+      @<%= User.find(@post.user_id).username %>
       <br>
       <%= I18n.l(@post.publication_date, format: :long) if @post.publication_date %>
       <%= @post.publication_date.in_time_zone.strftime("%Z")%>
