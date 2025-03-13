@@ -1,4 +1,91 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-</div>
+<style>
+  @import url("https://unpkg.com/open-props/colors.min.css");
+  @import url("https://unpkg.com/open-props/animations.min.css");
+  @import url("https://unpkg.com/open-props/normalize.min.css");
+
+  body {
+      display: flex;
+  }
+
+  header {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      background: var(--grape-0);
+  }
+
+  .hero {
+      padding: var(--size-10);
+      display: grid;
+      gap: var(--size-5);
+  }
+
+  .hero-message {
+      display: grid;
+      grid-template-columns: max-content;
+      color: var(--gray-9);
+      line-height: var(--font-lineheight-0);
+  }
+
+  .hero-message > div:last-child {
+      color: var(--indigo-7);
+  }
+
+  .under-hero {
+      color: var(--gray-7);
+      font-size: var(--font-size-4);
+      margin-block-end: var(--size-3);
+  }
+
+  .button-list {
+      display: flex;
+      gap: var(--size-3);
+  }
+
+  button {
+      background: white;
+      color: var(--indigo-8);
+      font-size: var(--font-size-3);
+      padding-inline: var(--size-8);
+      padding-block: var(--size-3);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow-2);
+  }
+
+  button.primary {
+      background: var(--indigo-8);
+      text-shadow: 0 1px 0 var(--indigo-9);
+      color: white;
+  }
+
+  button.primary:hover {
+      background: var(--indigo-7);
+  }
+
+  .promo-art {
+      align-self: stretch;
+  }
+
+  .promo-art > img {
+      block-size: 100%;
+      object-fit: cover;
+  }
+</style>
+<header>
+  <section class="hero">
+    <h1 class="hero-message">
+      <div>FlowPulse Note</div>
+      <div>Organizza le tue idee</div>
+    </h1>
+    <p class="under-hero">Scrivi e gestisci i tuoi contenuti in modo rapido e intuitivo.</p>
+    <div class="button-list">
+      <%= link_to 'Accedi', new_session_path, class:"btn primary" %>
+      <%= link_to 'Registrati', new_registration_path, class:"btn" %>
+    </div>
+  </section>
+  <picture class="promo-art">
+    <img src="https://doodleipsum.com/700x700/outline?bg=3b5bdb" height="800" width="800" alt="a random doodle">
+  </picture>
+</header>
+</body>
+</html>

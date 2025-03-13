@@ -119,6 +119,7 @@
       <%= image_tag "chevrons-up-down.svg", class: "mis-auto", size: 16, aria: { hidden: true } %>
     <% end %>
   <% else %>
+    <%= link_to 'Home', root_path %>
     <%= link_to 'Accedi', new_session_path %>
     <%= link_to 'Registrati', new_registration_path %>
   <% end %>
