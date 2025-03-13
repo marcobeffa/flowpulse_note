@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
  
   resources :posts, only: %i[show]
+  
   resources :profiles do
     resources :posts, only: %i[index]
   end
