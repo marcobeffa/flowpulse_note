@@ -47,10 +47,10 @@
     </div>
     <% if @content.stato_before_type_cast.to_i > 5 %>
       <div class="flex">
-        <% if @content.publication_date.nil? || @content.publication_date > Time.current  %>
-          <div class="flex flex-col items-start gap-half mr-4">
+        <% if @content.publication_date.nil?   %>
+          <div class="flex flex-col items-start gap-half mr-4 ml-4">
             <%= form.label :published, class: "text-sm font-medium leading-none" %>
-            <%= form.checkbox :published, class: "checkbox",  onchange: "this.form.submit();"  %>
+            <%= form.checkbox :published, class: "checkbox  m-4",  onchange: "this.form.submit();"  %>
           </div>
         <% end  %>
         <div class="flex flex-col items-start gap-half mr-4">

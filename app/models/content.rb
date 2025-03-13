@@ -3,7 +3,7 @@ class Content < ApplicationRecord
   friendly_id :title, use: :slugged
   belongs_to :user
   before_save :set_publication_date
-  after_find :check_and_update_publication_status
+
   before_save :set_slug
 
 
@@ -79,22 +79,16 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
   private
 
   def set_publication_date
-    if self.publication_date.nil?
-      if published?
+    if self.published?
+      if self.publication_date.nil? 
         self.publication_date = Time.current
       end
-    else
-      if publication_date <= Time.current && !published?
-        update_column(:published, true)
-      else
-        update_column(:published, false)
+    end
+      if publication_date <= Time.current
+        update_column(:published, true) # Salva senza callback per evitare loop
+      elsif publication_date > Time.current
+        update_column(:published, false) # Salva senza callback per evitare loop
       end
-    end
   end
-  # Controllo automatico quando il record viene caricato
-  def check_and_update_publication_status
-    if publication_date.present? && publication_date <= Time.current && !published?
-      update_column(:published, true) # Salva senza callback per evitare loop
-    end
-  end
+  
 end
