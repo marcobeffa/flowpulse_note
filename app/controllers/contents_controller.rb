@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   include Pagy::Backend
 
   before_action :set_content, only: %i[ edit update destroy show]
- 
+
   # GET /contents or /contents.json
   def index
     records = Current.user.contents

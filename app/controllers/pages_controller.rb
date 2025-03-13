@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access 
+  allow_unauthenticated_access
 
   layout "posts"
   def home

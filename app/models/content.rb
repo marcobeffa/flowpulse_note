@@ -28,7 +28,7 @@ class Content < ApplicationRecord
   pubblicazione: 13,         # Pubblicazione ufficiale del contenuto
   concluso: 14               # Il contenuto è chiuso e pubblicato
 }
-  
+
   # Validazioni
   validates :title, presence: true
   validates :body, presence: true
@@ -65,13 +65,13 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
     [ "title", "body", "description" ]
   end
 
-  
+
   def set_slug
     slug_gen = title.to_s.downcase
-                   .gsub(/[^a-z0-9\s]/, '')  # Rimuove caratteri speciali
-                   .gsub(/\s+/, '-')          # Sostituisce spazi con trattini
-                   .gsub(/-+/, '-')           # Evita più trattini consecutivi
-                   .gsub(/^-|-$/, '')         # Rimuove eventuali trattini iniziali o finali
+                   .gsub(/[^a-z0-9\s]/, "")  # Rimuove caratteri speciali
+                   .gsub(/\s+/, "-")          # Sostituisce spazi con trattini
+                   .gsub(/-+/, "-")           # Evita più trattini consecutivi
+                   .gsub(/^-|-$/, "")         # Rimuove eventuali trattini iniziali o finali
     if self.slug.nil? || self.slug != slug_gen
       self.slug = slug_gen
     end
@@ -79,7 +79,7 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
   private
 
   def set_publication_date
-    if self.publication_date.nil? 
+    if self.publication_date.nil?
       if published?
         self.publication_date = Time.current
       end

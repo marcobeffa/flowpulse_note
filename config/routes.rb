@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
   resources :contents
 
   get "all/:data/:pubblicazione/:visibility/:stato", to: "dashboard#all", as: "all"
   get "past/:data/:pubblicazione/:visibility/:stato", to: "dashboard#past", as: "past"
   get "future/:data/:pubblicazione/:visibility/:stato", to: "dashboard#future", as: "future"
 
- 
+
   resources :posts, only: %i[show]
-  
+
   resources :profiles do
     resources :posts, only: %i[index]
   end

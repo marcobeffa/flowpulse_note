@@ -57,6 +57,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "hotwire-spark"
+  gem "rubocop", require: false
 end
 
 group :test do
@@ -69,4 +70,4 @@ gem "css-zero", "~> 1.1"
 gem "redcarpet"
 gem "ransack"
 gem "pagy", "~> 9.3" # omit patch digit
-gem 'friendly_id', '~> 5.5.0'
+gem "friendly_id", "~> 5.5.0"

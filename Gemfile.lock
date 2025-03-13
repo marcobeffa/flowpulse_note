@@ -414,6 +414,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   ransack
   redcarpet
+  rubocop
   rubocop-rails-omakase
   selenium-webdriver
   solid_cable

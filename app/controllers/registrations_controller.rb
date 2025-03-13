@@ -1,8 +1,8 @@
 # app/controllers/registrations_controller.rb
 class RegistrationsController < ApplicationController
-  allow_unauthenticated_access only: [:new, :create]
+  allow_unauthenticated_access only: [ :new, :create ]
   before_action :resume_session, only: :new
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [ :edit, :update ]
 
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
@@ -33,7 +33,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  
+
 
   private
 

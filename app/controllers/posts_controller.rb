@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  allow_unauthenticated_access only: [:index, :show]
+  allow_unauthenticated_access only: [ :index, :show ]
   before_action :set_profile
 
   def index
@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-
     @post =  Content.published.where(visibility: "pubblico").friendly.find(params.expect(:id))
   end
 
