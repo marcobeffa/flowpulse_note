@@ -102,3 +102,8 @@ body {
 .input--clearable ::-webkit-search-cancel-button {
   display: none;
 }
+
+.field_with_errors {
+  display: inline-block; /* Mantiene il flusso */
+  width: 100%; /* Evita il collasso */
+}

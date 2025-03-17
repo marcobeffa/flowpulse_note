@@ -1,8 +1,21 @@
 it:
+  activerecord:
+    errors:
+      models:
+        content:
+          attributes:
+            title:
+              blank: "Il titolo non può essere vuoto"
+            body:
+              blank: "Il corpo non può essere vuoto"
+  errors:
+    messages:
+      blank: "Non può essere vuoto"
+
   date:
     formats:
       default: "%d-%m-%Y"
-      long: "%A %d %B %Y - %H:%M"  # Es. "Giovedì 13 Marzo 2025"
+      long: "%A %d %B %Y - %H:%M"
     day_names: [Domenica, Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato]
     abbr_day_names: [Dom, Lun, Mar, Mer, Gio, Ven, Sab]
     month_names: [~, Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre]
@@ -11,6 +24,4 @@ it:
   time:
     formats:
       default: "%H:%M"
-      long: "%A %d %B %Y - %H:%M" # Es. "Giovedì 13 Marzo 2025"
-
-    
+      long: "%A %d %B %Y - %H:%M"
