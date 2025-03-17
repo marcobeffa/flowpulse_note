@@ -23,42 +23,42 @@
   margin-bottom: 0.6em;
 }
 
-.markdown-body h1, .editor-preview-active-side h1, .editor-preview-active h1 {
+.markdown-body h1 {
   font-size: 2.25em;
   border-bottom: 1px solid #eaecef;
   padding-bottom: 0.3em;
 }
 
-.markdown-body h2, .editor-preview-active-side h2, .editor-preview-active h2 {
+.markdown-body h2 {
   font-size: 1.75em;
   border-bottom: 1px solid #eaecef;
   padding-bottom: 0.3em;
 }
 
-.markdown-body h3, .editor-preview-active-side h3, .editor-preview-active h3 {
+.markdown-body h3 {
   font-size: 1.5em;
 }
 
-.markdown-body h4, .editor-preview-active-side h4, .editor-preview-active h4 {
+.markdown-body h4 {
   font-size: 1.25em;
 }
 
-.markdown-body h5, .editor-preview-active-side h5, .editor-preview-active h5 {
+.markdown-body h5 {
   font-size: 1em;
 }
 
-.markdown-body h6, .editor-preview-active-side h6, .editor-preview-active h6 {
+.markdown-body h6 {
   font-size: 0.875em;
   color: #6a737d;
 }
 
 /* Paragrafi */
-.markdown-body p, .editor-preview-active-side p, .editor-preview-active p {
+.markdown-body p {
   margin: 0 0 1em;
 }
 
 /* Blockquote */
-.markdown-body blockquote, .editor-preview-active-side blockquote, .editor-preview-active blockquote {
+.markdown-body blockquote {
   margin: 0 0 1em;
   padding: 0.5em 1em;
   color: #6a737d;
@@ -67,20 +67,49 @@
 }
 
 /* Liste */
-.markdown-body ul, .editor-preview-active-side ul, .editor-preview-active ul,
-.markdown-body ol, .editor-preview-active-side ol, .editor-preview-active ol {
+.markdown-body ul, .markdown-body ol {
   padding-left: 2em;
   margin: 0 0 1em;
 }
 
-.markdown-body li, .editor-preview-active-side li, .editor-preview-active li {
+.markdown-body li {
   margin-bottom: 0.5em;
+  position: relative;
+}
+
+/* Stile per liste non ordinate (ul) */
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ul ul {
+  list-style-type: circle;
+  margin-left: 1.5em;
+}
+
+.markdown-body ul ul ul {
+  list-style-type: square;
+  margin-left: 1.5em;
+}
+
+/* Stile per liste ordinate (ol) */
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body ol ol {
+  list-style-type: lower-alpha;
+  margin-left: 1.5em;
+}
+
+.markdown-body ol ol ol {
+  list-style-type: lower-roman;
+  margin-left: 1.5em;
 }
 
 /* Codice inline */
-.markdown-body code, .editor-preview-active-side code, .editor-preview-active code {
+.markdown-body code {
   padding: 0.2em 0.4em;
-  margin: 0;
   font-size: 85%;
   background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
@@ -88,7 +117,7 @@
 }
 
 /* Blocchi di codice */
-.markdown-body pre, .editor-preview-active-side pre, .editor-preview-active pre {
+.markdown-body pre {
   display: block;
   padding: 1em;
   margin: 0 0 1em;
@@ -99,59 +128,58 @@
   overflow: auto;
 }
 
-.markdown-body pre code, .editor-preview-active-side pre code, .editor-preview-active pre code {
+.markdown-body pre code {
   padding: 0;
-  margin: 0;
   font-size: 100%;
   border: none;
   background: none;
 }
 
 /* Tabelle */
-.markdown-body table, .editor-preview-active-side table, .editor-preview-active table {
+.markdown-body table {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse;
 }
 
-.markdown-body table th, .editor-preview-active-side table th, .editor-preview-active table th,
-.markdown-body table td, .editor-preview-active-side table td, .editor-preview-active table td {
+.markdown-body table th,
+.markdown-body table td {
   padding: 0.6em 1em;
   border: 1px solid #dfe2e5;
 }
 
-.markdown-body table th, .editor-preview-active-side table th, .editor-preview-active table th {
+.markdown-body table th {
   background-color: #f6f8fa;
   font-weight: 600;
 }
 
 /* Immagini */
-.markdown-body img, .editor-preview-active-side img, .editor-preview-active img {
+.markdown-body img {
   max-width: 100%;
   height: auto;
 }
 
 /* Link */
-.markdown-body a, .editor-preview-active-side a, .editor-preview-active a {
+.markdown-body a {
   color: #0366d6;
   text-decoration: none;
 }
 
-.markdown-body a:hover, .editor-preview-active-side a:hover, .editor-preview-active a:hover {
+.markdown-body a:hover {
   text-decoration: underline;
 }
 
 /* Evidenziazione */
-.markdown-body strong, .editor-preview-active-side strong, .editor-preview-active strong {
+.markdown-body strong {
   font-weight: bold;
 }
 
-.markdown-body em, .editor-preview-active-side em, .editor-preview-active em {
+.markdown-body em {
   font-style: italic;
 }
 
 /* Separatori */
-.markdown-body hr, .editor-preview-active-side hr, .editor-preview-active hr {
+.markdown-body hr {
   border: 0;
   height: 1px;
   background: #dfe2e5;
