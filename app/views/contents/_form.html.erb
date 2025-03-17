@@ -37,17 +37,19 @@
     <%= form.textarea :body, class: "input", id:"editor" %>
   </div-->
   <div class="flex  items-start gap-half mbe-4">
-    <div class="flex flex-col items-start gap-half mbe-4">
-      <%= form.label :stato, "Stato", class: "text-sm font-medium leading-none" %>
-      <%= form.select :stato, Content.statos.keys.map { |s| [s.humanize, s] }, {}, class: "input",  onchange: "this.form.submit();"  %>
-    </div>
+    <% if content.visibility != "peivato"  %>
+      <div class="flex flex-col items-start gap-half mbe-4">
+        <%= form.label :stato, "Stato", class: "text-sm font-medium leading-none" %>
+        <%= form.select :stato, Content.statos.keys.map { |s| [s.humanize, s] }, {}, class: "input",  onchange: "this.form.submit();"  %>
+      </div>
+    <% end %>
     <div class="flex flex-col items-start gap-half mbe-4">
       <%= form.label :visibility, "Visibilità", class: "text-sm font-medium leading-none" %>
       <%= form.select :visibility, Content.visibilities.keys.map { |v| [v.humanize, v] }, {}, class: "input"  %>
     </div>
     <% if @content.stato_before_type_cast.to_i > 5 %>
       <div class="flex">
-        <% if @content.publication_date.nil?   %>
+        <% if @content.publication_date.nil?  %>
           <div class="flex flex-col items-start gap-half mr-4 ml-4">
             <%= form.label :published, class: "text-sm font-medium leading-none" %>
             <%= form.checkbox :published, class: "checkbox  m-4",  onchange: "this.form.submit();"  %>

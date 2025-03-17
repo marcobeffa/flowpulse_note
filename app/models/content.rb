@@ -4,7 +4,9 @@ class Content < ApplicationRecord
   belongs_to :user
   before_save :set_publication_date
 
-  before_save :set_slug
+  before_validation :generate_unique_slug, on: :create
+
+
 
 
   # Enum per visibilità
@@ -66,15 +68,17 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
   end
 
 
-  def set_slug
-    slug_gen = title.to_s.downcase
-                   .gsub(/[^a-z0-9\s]/, "")  # Rimuove caratteri speciali
-                   .gsub(/\s+/, "-")          # Sostituisce spazi con trattini
-                   .gsub(/-+/, "-")           # Evita più trattini consecutivi
-                   .gsub(/^-|-$/, "")         # Rimuove eventuali trattini iniziali o finali
-    if self.slug.nil? || self.slug != slug_gen
-      self.slug = slug_gen
+  def generate_unique_slug
+    base_slug = title.parameterize
+    slug_candidate = base_slug
+    count = 1
+
+    while Content.exists?(slug: slug_candidate, user_id: user_id)
+      slug_candidate = "#{base_slug}-#{count}"
+      count += 1
     end
+
+    self.slug = slug_candidate
   end
   private
 
@@ -84,10 +88,12 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
         self.publication_date = Time.current
       end
     end
+    if !self.publication_date.nil?
       if publication_date <= Time.current
         update_column(:published, true) # Salva senza callback per evitare loop
       elsif publication_date > Time.current
         update_column(:published, false) # Salva senza callback per evitare loop
       end
+    end
   end
 end
