@@ -3,7 +3,7 @@
   <td class="flex">
     <%= search_form_for @q, class: "flex items-center justify-between gap mbe-4" do |form| %>
       <div class="flex items-center grow gap">
-        <%= form.search_field :title_i_cont, placeholder: "Filter Note...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+        <%= form.search_field :title_i_cont, placeholder: "Filter content...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
         <%= link_to "Reset", contents_path, class: "btn btn--borderless show@md" if params.has_key?(:q) %>
         <%= form.submit "Cerca", class: "btn show@sm" %>
       </div>

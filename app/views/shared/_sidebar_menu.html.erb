@@ -78,10 +78,6 @@
                 <%= image_tag "frame.svg", size: 16, aria: { hidden: true } %>
                 <span class="overflow-ellipsis">Dashboard</span>
               <% end %>
-              <%= link_to contents_path, remote: true, class: "btn sidebar-menu__button" do %>
-                <%= image_tag "frame.svg", size: 16, aria: { hidden: true } %>
-                <span class="overflow-ellipsis">Contenuti</span>
-              <% end %>
               <% if authenticated? %>
                 <%= link_to profile_posts_path(Current.user.username), remote: true, class: "btn sidebar-menu__button" do %>
                   <%= image_tag "frame.svg", size: 16, aria: { hidden: true } %>

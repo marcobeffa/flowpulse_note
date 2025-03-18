@@ -1,7 +1,10 @@
 <% content_for :title, "Contents" %>
 <%#= params[:q]%>
 <div class="flex items-center justify-between mbe-4">
-  <h1 class="font-bold text-4xl">Dashboard</h1>
+  <div class="group" role="group" aria-label="Navigazione eventi">
+    <%= link_to "Contenuti", contents_path, class: "btn btn--#{btn("contents", controller_name).html_safe}" %>
+    <%= link_to "Dashboard", dashboard_path_for(:all), class: "btn btn--#{btn("dashboard", controller_name).html_safe}" %>
+  </div>
   <%= render "dashboard/nav_dashboard"%>
 </div>
 <div class="overflow-x-hidden">

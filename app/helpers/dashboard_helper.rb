@@ -6,6 +6,7 @@ module DashboardHelper
       "secondary"
     end
   end
+
   def dashboard_path_for(type, params = {})
     routes = Rails.application.routes.url_helpers
 
