@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get "future/:data/:pubblicazione/:visibility/:stato", to: "dashboard#future", as: "future"
 
 
-  resources :posts, only: %i[show]
+
 
   resources :profiles do
-    resources :posts, only: %i[index]
+    resources :posts, only: %i[index show]
   end
 
   namespace :home do
