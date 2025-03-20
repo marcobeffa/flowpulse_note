@@ -12,9 +12,9 @@
     </div>
   <% end %>
 <% end %>
-<%= render @content %>
 <div class="flex flex-wrap items-center gap mbs-6" style="--row-gap: .5rem">
+  <%= link_to "<-", contents_path, class: "btn" %>
   <%= link_to "Edit this content", edit_content_path(@content), class: "btn", data: { turbo: false } %>
-  <%= link_to "Back to contents", contents_path, class: "btn" %>
-  <%= button_to "Destroy this content", @content, method: :delete, class: "btn" %>
+  <%= button_to "Destroy this content", @content, method: :delete, class: "btn", data: { turbo_confirm: "Are you sure?" } %>
 </div>
+<%= render @content %>

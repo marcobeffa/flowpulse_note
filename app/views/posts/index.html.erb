@@ -1,5 +1,9 @@
 <div class="flex flex-col gap-1">
-  <p class="text-lg  text-gray-800 p-4"> <span class="font-semibold">Autore:</span>
+  <p class="text-lg  text-gray-800 p-4">
+    <% if authenticated? %>
+      <%= link_to "Vai all'area personale", contents_path, class: "btn btn--primary" %>
+    <% end %>
+    <span class="font-semibold">Autore:</span>
     @<%= @profile.username %>
   </p>
 </div>

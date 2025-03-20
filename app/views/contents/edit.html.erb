@@ -1,10 +1,10 @@
 <% content_for :title, "Editing content" %>
-
 <h1 class="font-bold text-4xl mbe-4">Editing content</h1>
-
-<%= render "form", content: @content %>
-
 <div class="inline-flex flex-wrap items-center gap mbs-2" style="--row-gap: .5rem">
+  <%= link_to "<- contents", contents_path, class: "btn" %>
   <%= link_to "Show this content", @content, class: "btn" %>
-  <%= link_to "Back to contents", contents_path, class: "btn" %>
+  <% if params[:edit].nil?  %>
+    <%= link_to 'Modifica testo', edit_content_path(@content, edit: "body" ), class: "btn btn--primary m-5" %>
+  <% end %>
 </div>
+<%= render "form", content: @content %>

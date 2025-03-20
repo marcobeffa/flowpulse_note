@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post =  Content.published.where(visibility: "pubblico").friendly.find(params.expect(:id))
+    @post =  @profile.contents.published.where(visibility: "pubblico").friendly.find(params.expect(:id))
   end
 
 
