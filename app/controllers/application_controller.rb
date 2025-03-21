@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionView::MissingTemplate, with: :fallback_for_old_browser
   rescue_from ActionController::UnknownFormat, with: :fallback_for_old_browser
-  
+
   private
 
   def fallback_for_old_browser(exception)
