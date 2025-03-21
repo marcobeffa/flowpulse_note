@@ -87,6 +87,7 @@ GEM
       msgpack (~> 1.2)
     brakeman (7.0.0)
       racc
+    browser (6.2.0)
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -399,6 +400,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
+  browser
   capybara
   css-zero (~> 1.1)
   debug

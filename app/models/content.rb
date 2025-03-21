@@ -84,7 +84,7 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
 
   def set_publication_date
     if self.published?
-      if self.publication_date.nil? # || self.publication_date > Date.today  bug controller show
+      if self.publication_date.nil? # || self.publication_date > Date.today  bug
         self.publication_date = Time.current
       end
     end
