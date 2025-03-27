@@ -33,7 +33,7 @@ class Content < ApplicationRecord
 
   # Validazioni
   validates :title, presence: true
-  validates :body, presence: true
+  
   validates :visibility, inclusion: { in: visibilities.keys }
   validates :stato, inclusion: { in: statos.keys }
 
