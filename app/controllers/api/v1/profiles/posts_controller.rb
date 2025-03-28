@@ -1,4 +1,5 @@
 class Api::V1::Profiles::PostsController < ApplicationController
+        allow_unauthenticated_access
         before_action :set_profile
 
         # Lista di tutti i post pubblici (solo note)
