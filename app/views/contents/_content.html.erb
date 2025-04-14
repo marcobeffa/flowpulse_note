@@ -43,7 +43,8 @@
         <%= content.description %>
       <% end%>
     </td>
-    <td><%= content.publication_date.strftime("%d-%m-%Y %H:%M") if content.publication_date %></td>
+    <td><%= content.publication_date.strftime("%d/%m/%Y %H:%M") if content.publication_date %></td>
+    <td><%= content.updated_at.strftime("%d/%m/%Y %H:%M") %></td>
     <td><%= content.visibility %></td>
     <% if content.visibility != "privato" %>
       <td><%= content.stato %></td>

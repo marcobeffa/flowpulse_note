@@ -16,12 +16,13 @@
         <!--td style="width: 105px;"-->
         <td>Title</td>
         <td>Pubblicazione</td>
+        <td>Aggiornato</td>
         <td>Visibility</td>
         <td>Stato</td>
       </tr>
     </thead>
     <tbody>
-      <% @contents.each do |content| %>
+      <% @contents.order(:updated_at).each do |content| %>
         <%= render content %>
       <% end %>
     </tbody>
