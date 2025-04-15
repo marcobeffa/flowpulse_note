@@ -10,7 +10,7 @@ class Content < ApplicationRecord
 
 
   # Enum per visibilità
-  enum :visibility, { privato: 0, iscritti: 1, pubblico: 2 }
+  enum :visibility, { privato: 0, iscritti: 1, pubblico: 2, business: 3 }
 
   # Enum per stato
   enum :stato, {
