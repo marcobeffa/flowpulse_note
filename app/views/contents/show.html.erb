@@ -10,6 +10,16 @@
         </button>
       </div>
     </div>
+    <div class="flex  items-start gap-half mbe-4">
+      <%= link_to 'Api pubblica', api_v1_profile_post_path(@content.user.username, @content), class: "btn btn--primary" %>
+      <div class="input input--actor flex items-center gap" data-controller="copyable-input">
+        <%= text_field_tag "copyable_input", "#{request.base_url}#{api_v1_profile_post_path(@content.user.username, @content)}", readonly: "readonly", data: { copyable_input_target: "input" } %>
+        <button type="button" class="btn btn--plain" data-copyable-input-target="button" data-action="copyable-input#copy">
+          <%= image_tag "copy.svg", size: 20, aria: { hidden: true } %>
+          <span class="sr-only">Copy to clipboard</span>
+        </button>
+      </div>
+    </div>
   <% end %>
 <% end %>
 <div class="flex flex-wrap items-center gap mbs-6" style="--row-gap: .5rem">
