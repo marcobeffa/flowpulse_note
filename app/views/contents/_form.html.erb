@@ -56,6 +56,10 @@
       </div>
     </div>
     <div class="flex flex-col items-start gap-half mbe-4">
+      <%= form.label :image_url, class: "text-sm font-medium leading-none" %>
+      <%= form.text_field :image, class: "input" %>
+    </div>
+    <div class="flex flex-col items-start gap-half mbe-4">
       <%= form.label :description, class: "text-sm font-medium leading-none" %>
       <%= form.text_field :description, class: "input" %>
     </div>

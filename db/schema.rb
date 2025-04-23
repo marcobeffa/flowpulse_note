@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_17_081913) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_23_051524) do
   create_table "contents", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_081913) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.text "image"
     t.index ["slug", "user_id"], name: "index_contents_on_slug_and_user_id", unique: true
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
