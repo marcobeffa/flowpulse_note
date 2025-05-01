@@ -96,4 +96,25 @@ scope :scheduled, -> { where("publication_date > ?", Time.current).order(publica
       end
     end
   end
+  # video_url
+  def youtube_id
+    return unless video_url.present?
+    uri = URI.parse(video_url) rescue nil
+    return nil unless uri
+
+    if uri.host&.include?("youtu.be")
+      uri.path[1..] # rimuove lo slash iniziale
+    elsif uri.host&.include?("youtube.com")
+      CGI.parse(uri.query.to_s)["v"]&.first
+    end
+  end
+
+  def is_youtube?
+    youtube_id.present?
+  end
+
+  def embed_url
+    return "https://www.youtube.com/embed/#{youtube_id}" if is_youtube?
+    nil
+  end
 end

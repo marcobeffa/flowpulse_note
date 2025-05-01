@@ -84,6 +84,6 @@ class ContentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def content_params
-      params.expect(content: [ :user_id, :title, :description, :body, :publication_date, :visibility, :published, :stato, :slug, :image ])
+      params.expect(content: [ :user_id, :title, :description, :body, :publication_date, :visibility, :published, :stato, :slug, :image, :video_url ])
     end
 end
