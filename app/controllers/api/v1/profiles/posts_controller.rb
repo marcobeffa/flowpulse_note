@@ -4,7 +4,7 @@ class Api::V1::Profiles::PostsController < ApplicationController
 
         # Lista di tutti i post pubblici (solo note)
         def index
-          @posts =  @profile.contents.published.where(visibility: "pubblico").order(publication_date: :asc)
+          @posts =  @profile.contents.published.where(visibility: "pubblico").order(publication_date: :desc)
           render json: @posts
         end
 

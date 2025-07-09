@@ -44,8 +44,7 @@ class Content < ApplicationRecord
   scope :in_revisione, -> { where(stato: :revisione) }
 
 # Scope per i contenuti con una data di pubblicazione futura, ordinati dal più vicino al più lontano
-scope :published, -> { where("publication_date <= ?", Time.current).order(publication_date: :asc) }
-
+scope :published, -> { where("publication_date <= ?", Time.current).order(publication_date: :desc) }
 # Scope per i contenuti pubblicati, ordinati dal più recente al più vecchio
 scope :scheduled, -> { where("publication_date > ?", Time.current).order(publication_date: :desc) }
 
