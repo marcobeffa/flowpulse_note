@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get "domain/markpostura"
+  
+  constraints(host: /^(www\.)?(markpostura\.it|markpostura\.com)$/) do
+    get "/", to: "domain#markpostura", as: :markpostura_root
+  end
+
+
+  # Root di default per altri domini
   resources :contents
 
   namespace :api do
