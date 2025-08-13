@@ -69,6 +69,6 @@ end
 gem "css-zero", "~> 1.1"
 gem "redcarpet"
 gem "ransack"
-gem "pagy", "~> 9.3" # omit patch digit
+gem "pagy", "~> 9.4" # omit patch digit
 gem "friendly_id", "~> 5.5.0"
 gem "browser"
